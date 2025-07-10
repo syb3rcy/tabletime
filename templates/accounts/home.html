@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Django Login App{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="welcome-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">
+                <i class="fas fa-home me-3"></i>Welcome, {{ user.username }}!
+            </h1>
+            <p class="lead mb-4">You are successfully logged in to your Django account.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h5 class="card-title">
+                                <i class="fas fa-user-circle text-primary me-2"></i>
+                                Quick Actions
+                            </h5>
+                            <div class="row g-3 mt-2">
+                                <div class="col-md-6">
+                                    <a href="{% url 'accounts:profile' %}" class="btn btn-outline-primary w-100">
+                                        <i class="fas fa-user me-2"></i>View Profile
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="{% url 'accounts:logout' %}" class="btn btn-outline-secondary w-100">
+                                        <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="welcome-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">
+                <i class="fas fa-shield-alt me-3"></i>Django Login App
+            </h1>
+            <p class="lead mb-4">A secure and modern authentication system built with Django.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <h5 class="card-title">
+                                <i class="fas fa-rocket text-primary me-2"></i>
+                                Get Started
+                            </h5>
+                            <p class="card-text mb-4">
+                                Create an account or sign in to access your personalized dashboard.
+                            </p>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <a href="{% url 'accounts:login' %}" class="btn btn-primary w-100 btn-lg">
+                                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="{% url 'accounts:signup' %}" class="btn btn-outline-light w-100 btn-lg">
+                                        <i class="fas fa-user-plus me-2"></i>Sign Up
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-lock fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Secure Authentication</h5>
+                        <p class="card-text">
+                            Built with Django's robust authentication system with password hashing and CSRF protection.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Responsive Design</h5>
+                        <p class="card-text">
+                            Modern, mobile-first design that works perfectly on all devices and screen sizes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-cogs fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Easy to Customize</h5>
+                        <p class="card-text">
+                            Clean, well-structured code that's easy to modify and extend for your specific needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
